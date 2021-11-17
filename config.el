@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "Christian Zimmerer"
+      user-mail-address "chzi@pm.me")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -45,10 +45,55 @@
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
-;;
+
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(setq display-time-24hr-format t)
+(setq display-time-day-and-date t)
+(setq display-time-default-load-average 'nil)
+(display-time-mode 1)
+
+;; Isabelle setup
+(use-package! isar-mode
+  :mode "\\.thy\\'"
+  :config
+  ;; (add-hook 'isar-mode-hook 'turn-on-highlight-indentation-mode)
+  (add-hook 'isar-mode-hook 'flycheck-mode)
+  (add-hook 'isar-mode-hook 'company-mode)
+  (add-hook 'isar-mode-hook
+            (lambda ()
+              (set (make-local-variable 'company-backends)
+                   '((company-dabbrev-code company-yasnippet)))))
+  (add-hook 'isar-mode-hook
+            (lambda ()
+              (set (make-local-variable 'indent-tabs-mode) nil)))
+  (add-hook 'isar-mode-hook
+            (lambda ()
+              (yas-minor-mode)))
+  )
+
+(use-package! lsp-isar-parse-args
+  :custom
+  (lsp-isar-parse-args-nollvm nil))
+
+(use-package! lsp-isar
+  :commands lsp-isar-define-client-and-start
+  :custom
+  (lsp-isar-output-use-async t)
+  (lsp-isar-output-time-before-printing-goal nil)
+  (lsp-isar-experimental t)
+  (lsp-isar-split-pattern 'lsp-isar-split-pattern-three-columns)
+  (lsp-isar-decorations-delayed-printing t)
+  :init
+  (add-hook 'lsp-isar-init-hook 'lsp-isar-open-output-and-progress-right-spacemacs)
+  (add-hook 'isar-mode-hook #'lsp-isar-define-client-and-start)
+
+  (push (concat "~/Programme/isabelle-emacs/src/Tools/emacs-lsp/yasnippet")
+   yas-snippet-dirs)
+  (setq lsp-isar-path-to-isabelle "~/Programme/isabelle-emacs")
+  )  ; looks for ~/.doom.d/my/package/my-package.el
