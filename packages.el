@@ -61,3 +61,5 @@
    :recipe (:local-repo "~/Programme/isabelle-emacs/src/Tools/emacs-lsp/lsp-isar"))
 
 (package! session-async)
+
+(package! elcord)

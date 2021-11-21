@@ -58,6 +58,8 @@
 (setq display-time-default-load-average 'nil)
 (display-time-mode 1)
 
+;; discord rich presence
+
 ;; Isabelle setup
 (use-package! isar-mode
   :mode "\\.thy\\'"
@@ -87,7 +89,7 @@
   (lsp-isar-output-use-async t)
   (lsp-isar-output-time-before-printing-goal nil)
   (lsp-isar-experimental t)
-  (lsp-isar-split-pattern 'lsp-isar-split-pattern-three-columns)
+  (lsp-isar-split-pattern 'lsp-isar-split-pattern-two-columns)
   (lsp-isar-decorations-delayed-printing t)
   :init
   (add-hook 'lsp-isar-init-hook 'lsp-isar-open-output-and-progress-right-spacemacs)
@@ -97,3 +99,9 @@
    yas-snippet-dirs)
   (setq lsp-isar-path-to-isabelle "~/Programme/isabelle-emacs")
   )  ; looks for ~/.doom.d/my/package/my-package.el
+
+(setq elcord-refresh-rate 5)
+(setq elcord-use-major-mode-as-main-icon :true)
+(setq elcord-editor-icon "emacs_material_icon")
+(setq elcord-show-small-icon :false)
+(elcord-mode)
