@@ -35,6 +35,9 @@
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
+;; This starts Emacs maximized
+(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
@@ -58,8 +61,12 @@
 (setq display-time-default-load-average 'nil)
 (display-time-mode 1)
 
-;; discord rich presence
 
+(map! :map evil-window-map
+      [left]  #'evil-window-left
+      [right] #'evil-window-right
+      [up] #'evil-window-up
+      [down] #'evil-window-down)
 ;; Isabelle setup
 (use-package! isar-mode
   :mode "\\.thy\\'"
@@ -100,8 +107,13 @@
   (setq lsp-isar-path-to-isabelle "~/Programme/isabelle-emacs")
   )  ; looks for ~/.doom.d/my/package/my-package.el
 
+
+;; Discord rich presence
 (setq elcord-refresh-rate 5)
 (setq elcord-use-major-mode-as-main-icon :true)
 (setq elcord-editor-icon "emacs_material_icon")
 (setq elcord-show-small-icon :false)
 (elcord-mode)
+
+
+(setq lsp-haskell-server-path "~/.ghcup/bin/haskell-language-server-wrapper-1.5.1")
