@@ -19,8 +19,10 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+(setq doom-font (font-spec :family "Noto Sans Mono" :size 15 :weight 'semi-light)
+      doom-variable-pitch-font
+      (font-spec :family "Noto Sans" :size 15)
+      )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -103,7 +105,7 @@
   (add-hook 'isar-mode-hook #'lsp-isar-define-client-and-start)
 
   (push (concat "~/Programme/isabelle-emacs/src/Tools/emacs-lsp/yasnippet")
-   yas-snippet-dirs)
+        yas-snippet-dirs)
   (setq lsp-isar-path-to-isabelle "~/Programme/isabelle-emacs")
   )  ; looks for ~/.doom.d/my/package/my-package.el
 
@@ -115,5 +117,16 @@
 (setq elcord-show-small-icon :false)
 (elcord-mode)
 
-
+;; Haskell language server
 (setq lsp-haskell-server-path "~/.ghcup/bin/haskell-language-server-wrapper-1.5.1")
+
+;; LSP+clangd
+(setq lsp-clients-clangd-args '("-j=3"
+				"--background-index"
+				"--clang-tidy"
+				"--completion-style=detailed"
+				"--header-insertion=never"
+				"--header-insertion-decorators=0"))
+(after! lsp-clangd (set-lsp-priority! 'clangd 2))
+
+(add-hook 'lsp-mode-hook 'lsp-semantic-tokens-mode)
