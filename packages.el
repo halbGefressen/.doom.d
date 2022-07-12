@@ -63,3 +63,5 @@
 (package! session-async)
 
 (package! elcord)
+
+(package! color-identifiers-mode)
