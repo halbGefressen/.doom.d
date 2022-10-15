@@ -38,7 +38,7 @@
 (setq display-line-numbers-type t)
 
 ;; This starts Emacs maximized
-(add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
@@ -115,10 +115,10 @@
 (setq elcord-use-major-mode-as-main-icon :true)
 (setq elcord-editor-icon "emacs_material_icon")
 (setq elcord-show-small-icon :false)
-(elcord-mode)
+;; (elcord-mode)
 
 ;; Haskell language server
-(setq lsp-haskell-server-path "~/.ghcup/bin/haskell-language-server-wrapper-1.5.1")
+(setq lsp-haskell-server-path "~/.ghcup/bin/haskell-language-server-wrapper")
 
 ;; LSP+clangd
 (setq lsp-clients-clangd-args '("-j=3"
@@ -130,3 +130,62 @@
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
 
 (add-hook 'lsp-mode-hook 'lsp-semantic-tokens-mode)
+
+
+;; Custom keybindings
+(map! :leader :map 'isar-mode-map :localleader
+      (:prefix ("s" . "Sledgehammer...")
+      :desc "Open interface"
+      "s" #'lsp-isar-sledgehammer-interface))
+ (map! :leader :map 'isar-mode-map :localleader
+      (:prefix ("s" . "Sledgehammer...")
+      :desc "Insert with interface"
+      "S"
+      #'lsp-isar-insert-sledgehammer-and-call))
+ (map! :leader :map 'isar-mode-map :localleader
+      (:prefix ("s" . "Sledgehammer...")
+      :desc "Insert sledgehammer"
+      "i"
+      #'lsp-isar-insert-sledgehammer-and-call))
+
+(map! :leader :map 'isar-mode-map :localleader
+      (:prefix ("t" . "Try0...")
+        :desc "Insert try0"
+        "t"
+        #'lsp-isar-insert-try0))
+(map! :leader :map 'isar-mode-map :localleader
+      (:prefix ("t" . "Try0...")
+        :desc "Insert proof"
+        "p"
+        #'lsp-isar-insert-try0-proof))
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert auto"
+      "a" #'lsp-isar-insert-auto)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert simp"
+      "b" #'lsp-isar-insert-simp)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert meson"
+      "e" #'lsp-isar-insert-meson)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert fastforce"
+      "f" #'lsp-isar-insert-fastforce)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert algebra"
+      "g" #'lsp-isar-insert-algebra)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert linarith"
+      "l" #'lsp-isar-insert-linarith)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert force"
+      "F" #'lsp-isar-insert-force)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert fast"
+      "o" #'lsp-isar-insert-fast)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert presburger"
+      "p" #'lsp-isar-insert-presburger)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert argo"
+      "r" #'lsp-isar-insert-argo)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert satx"
+      "x" #'lsp-isar-insert-satx)
+(map! :leader :map 'isar-mode-map :localleader :desc "Insert proof outline"
+      "P" #'lsp-isar-insert-proof-outline)
+
+
+(map! :leader :map 'treemacs-mode-map :localleader :desc "Switch workspace"
+      "s" #'treemacs-switch-workspace)
+
+(map! :leader :map 'treemacs-mode-map :localleader :desc "Edit workspaces"
+      "e" #'treemacs-edit-workspaces)
