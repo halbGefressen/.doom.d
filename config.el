@@ -186,6 +186,11 @@
 
 (map! :leader :map 'treemacs-mode-map :localleader :desc "Switch workspace"
       "s" #'treemacs-switch-workspace)
-
 (map! :leader :map 'treemacs-mode-map :localleader :desc "Edit workspaces"
       "e" #'treemacs-edit-workspaces)
+(map! :leader :map 'treemacs-mode-map :localleader :desc "Add project"
+      "a" #'treemacs-add-project-to-workspace)
+(map! :leader :map 'treemacs-mode-map :localleader :desc "Remove project"
+      "R" #'treemacs-remove-project-from-workspace)
+(map! :leader :map 'treemacs-mode-map :localleader :desc "Rename project"
+      "r" #'treemacs-rename-project)
