@@ -132,65 +132,37 @@
 (add-hook 'lsp-mode-hook 'lsp-semantic-tokens-mode)
 
 
+(map! :leader (:prefix ("t" . "toggle")
+        :desc "Maximize window" "M" #'toggle-frame-maximized))
+
 ;; Custom keybindings
 (map! :leader :map 'isar-mode-map :localleader
-      (:prefix ("s" . "Sledgehammer...")
-      :desc "Open interface"
-      "s" #'lsp-isar-sledgehammer-interface))
- (map! :leader :map 'isar-mode-map :localleader
-      (:prefix ("s" . "Sledgehammer...")
-      :desc "Insert with interface"
-      "S"
-      #'lsp-isar-insert-sledgehammer-and-call))
- (map! :leader :map 'isar-mode-map :localleader
-      (:prefix ("s" . "Sledgehammer...")
-      :desc "Insert sledgehammer"
-      "i"
-      #'lsp-isar-insert-sledgehammer-and-call))
-
-(map! :leader :map 'isar-mode-map :localleader
       (:prefix ("t" . "Try0...")
-        :desc "Insert try0"
-        "t"
-        #'lsp-isar-insert-try0))
-(map! :leader :map 'isar-mode-map :localleader
-      (:prefix ("t" . "Try0...")
-        :desc "Insert proof"
-        "p"
-        #'lsp-isar-insert-try0-proof))
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert auto"
-      "a" #'lsp-isar-insert-auto)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert simp"
-      "b" #'lsp-isar-insert-simp)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert meson"
-      "e" #'lsp-isar-insert-meson)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert fastforce"
-      "f" #'lsp-isar-insert-fastforce)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert algebra"
-      "g" #'lsp-isar-insert-algebra)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert linarith"
-      "l" #'lsp-isar-insert-linarith)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert force"
-      "F" #'lsp-isar-insert-force)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert fast"
-      "o" #'lsp-isar-insert-fast)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert presburger"
-      "p" #'lsp-isar-insert-presburger)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert argo"
-      "r" #'lsp-isar-insert-argo)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert satx"
-      "x" #'lsp-isar-insert-satx)
-(map! :leader :map 'isar-mode-map :localleader :desc "Insert proof outline"
-      "P" #'lsp-isar-insert-proof-outline)
+                :desc "Insert try0"           "t" #'lsp-isar-insert-try0
+                :desc "Insert proof"          "p" #'lsp-isar-insert-try0-proof)
+      (:prefix ("s" . "Sledgehammer...")
+                :desc "Open interface"        "s" #'lsp-isar-sledgehammer-interface
+                :desc "Insert with interface" "S" #'lsp-isar-insert-sledgehammer-and-call
+                :desc "Insert sledgehammer"   "i" #'lsp-isar-insert-sledgehammer-and-call)
+        :desc "Insert auto"          "a" #'lsp-isar-insert-auto
+        :desc "Insert simp"          "b" #'lsp-isar-insert-simp
+        :desc "Insert meson"         "e" #'lsp-isar-insert-meson
+        :desc "Insert fastforce"     "f" #'lsp-isar-insert-fastforce
+        :desc "Insert algebra"       "g" #'lsp-isar-insert-algebra
+        :desc "Insert linarith"      "l" #'lsp-isar-insert-linarith
+        :desc "Insert force"         "F" #'lsp-isar-insert-force
+        :desc "Insert fast"          "o" #'lsp-isar-insert-fast
+        :desc "Insert presburger"    "p" #'lsp-isar-insert-presburger
+        :desc "Insert argo"          "r" #'lsp-isar-insert-argo
+        :desc "Insert satx"          "x" #'lsp-isar-insert-satx
+        :desc "Insert proof outline" "P" #'lsp-isar-insert-proof-outline
+        :desc "Delete windows"       "K" #'ace-delete-other-windows)
 
 
-(map! :leader :map 'treemacs-mode-map :localleader :desc "Switch workspace"
-      "s" #'treemacs-switch-workspace)
-(map! :leader :map 'treemacs-mode-map :localleader :desc "Edit workspaces"
-      "e" #'treemacs-edit-workspaces)
-(map! :leader :map 'treemacs-mode-map :localleader :desc "Add project"
-      "a" #'treemacs-add-project-to-workspace)
-(map! :leader :map 'treemacs-mode-map :localleader :desc "Remove project"
-      "R" #'treemacs-remove-project-from-workspace)
-(map! :leader :map 'treemacs-mode-map :localleader :desc "Rename project"
-      "r" #'treemacs-rename-project)
+
+(map! :leader :map 'treemacs-mode-map :localleader
+        :desc "Switch workspace" "s" #'treemacs-switch-workspace
+        :desc "Edit workspaces"  "e" #'treemacs-edit-workspaces
+        :desc "Add project"      "a" #'treemacs-add-project-to-workspace
+        :desc "Remove project"   "R" #'treemacs-remove-project-from-workspace
+        :desc "Rename project"   "r" #'treemacs-rename-project)
