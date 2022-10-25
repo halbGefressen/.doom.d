@@ -63,6 +63,9 @@
 (setq display-time-default-load-average 'nil)
 (display-time-mode 1)
 
+;; Keybind for maximizing
+(map! :leader (:prefix ("t" . "toggle")
+        :desc "Maximize window" "M" #'toggle-frame-maximized))
 
 ;; Navigation with SPC w arrowkeys
 (map! :map evil-window-map
@@ -71,9 +74,8 @@
       [up] #'evil-window-up
       [down] #'evil-window-down)
 
-
+;; Isabelle configuration
 (load! "isabelle-settings/config.el")
-
 
 
 ;; Discord rich presence
@@ -97,12 +99,6 @@
 
 ;; Semantic highlighting
 (add-hook 'lsp-mode-hook 'lsp-semantic-tokens-mode)
-
-
-(map! :leader (:prefix ("t" . "toggle")
-        :desc "Maximize window" "M" #'toggle-frame-maximized))
-
-
 
 
 (map! :leader :map 'treemacs-mode-map :localleader
