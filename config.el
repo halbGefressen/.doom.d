@@ -63,9 +63,12 @@
 (setq display-time-default-load-average 'nil)
 (display-time-mode 1)
 
+(after! orderless
+  (setq completion-styles '(hotfuzz orderless basic)))
+
 ;; Keybind for maximizing
 (map! :leader (:prefix ("t" . "toggle")
-        :desc "Maximize window" "M" #'toggle-frame-maximized))
+               :desc "Maximize window" "M" #'toggle-frame-maximized))
 
 ;; Navigation with SPC w arrowkeys
 (map! :map evil-window-map
@@ -102,8 +105,8 @@
 
 
 (map! :leader :map 'treemacs-mode-map :localleader
-        :desc "Switch workspace" "s" #'treemacs-switch-workspace
-        :desc "Edit workspaces"  "e" #'treemacs-edit-workspaces
-        :desc "Add project"      "a" #'treemacs-add-project-to-workspace
-        :desc "Remove project"   "R" #'treemacs-remove-project-from-workspace
-        :desc "Rename project"   "r" #'treemacs-rename-project)
+      :desc "Switch workspace" "s" #'treemacs-switch-workspace
+      :desc "Edit workspaces"  "e" #'treemacs-edit-workspaces
+      :desc "Add project"      "a" #'treemacs-add-project-to-workspace
+      :desc "Remove project"   "R" #'treemacs-remove-project-from-workspace
+      :desc "Rename project"   "r" #'treemacs-rename-project)

@@ -18,6 +18,10 @@
   (add-hook 'isar-mode-hook
             (lambda ()
               (yas-minor-mode)))
+  ;; fix unicode completion
+  (add-hook 'isar-mode-hook
+            (lambda ()
+              (unicode-tokens-mode) (unicode-tokens-mode)))
   )
 
 (use-package! lsp-isar-parse-args
@@ -33,7 +37,7 @@
   (lsp-isar-split-pattern 'lsp-isar-split-pattern-two-columns)
   (lsp-isar-decorations-delayed-printing t)
   :init
-  (add-hook 'lsp-isar-init-hook 'lsp-isar-open-output-and-progress-right-two-columns)
+  (add-hook 'lsp-isar-init-hook 'lsp-isar-open-output-and-progress-right-spacemacs)
   (add-hook 'isar-mode-hook #'lsp-isar-define-client-and-start)
 
   (push (concat local-isabelle-path "/src/Tools/emacs-lsp/yasnippet")

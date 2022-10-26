@@ -56,4 +56,6 @@
 
 (package! color-identifiers-mode)
 
+(package! hotfuzz)
+
 (load! "isabelle-settings/packages.el")
