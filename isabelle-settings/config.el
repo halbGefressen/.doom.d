@@ -22,6 +22,7 @@
   (add-hook 'isar-mode-hook
             (lambda ()
               (unicode-tokens-mode) (unicode-tokens-mode)))
+  (add-hook 'isar-mode-hook #'display-line-numbers-mode)
   )
 
 (use-package! lsp-isar-parse-args
