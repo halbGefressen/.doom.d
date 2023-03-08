@@ -2,6 +2,24 @@
 (setq local-isabelle-path "~/Programme/isabelle-emacs")
 ;; -------------------------------------------------------
 
+
+;; export CVC5_SOLVER=$HOME/Programme/isabelle-emacs/cvc5-1.0.2/x86_64-linux/cvc5
+;; export CVC5_VERSION="1.0.2"
+;; export E_HOME=/home/christian/Programme/eprover/PROVER
+;; export E_VERSION="3.0"
+;; export ISABELLE_VERIT=$HOME/Programme/isabelle-emacs/verit-2021.06.2-rmx/x86_64-linux/veriT
+;; export VERIT_VERSION="2021.06.2-RMX"
+
+(setenv "CVC5_SOLVER" (concat
+        (getenv "HOME")
+        "/Programme/isabelle-emacs/cvc5-1.0.2/x86_64-linux/cvc5"))
+(setenv "CVC5_VERSION" "1.0.2")
+(setenv "E_HOME" (concat (getenv "HOME") "/Programme/eprover/PROVER"))
+(setenv "E_VERSION" "3.0")
+;; (setenv "ISABELLE_VERIT" (concat
+;;      (getenv "HOME")
+;;      "/Programme/isabelle-emacs/verit-2021.06.2-rmx/x86_64-linux/veriT"))
+
 (use-package! isar-mode
   :mode "\\.thy\\'"
   :config
@@ -27,7 +45,8 @@
 
 (use-package! lsp-isar-parse-args
   :custom
-  (lsp-isar-parse-args-nollvm nil))
+  (lsp-isar-parse-args-nollvm nil)
+  )
 
 (use-package! lsp-isar
   :commands lsp-isar-define-client-and-start
@@ -56,5 +75,6 @@
             (advice-add #'evil-motion-range :around #'~/evil-motion-range--wrapper)
 
 
+(setq lsp-isabelle-options (append lsp-isabelle-options (list "-d" "/home/christian/Programme/PSL" "-l" "Smart_Isabelle")))
 ;; Keybindings for local leader
 (load! "keybindings.el")

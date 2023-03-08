@@ -21,8 +21,7 @@
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "Noto Sans Mono" :size 15 :weight 'semi-light)
       doom-variable-pitch-font
-      (font-spec :family "Noto Sans" :size 15)
-      )
+      (font-spec :family "Noto Sans" :size 15))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -66,20 +65,6 @@
 (after! orderless
   (setq completion-styles '(hotfuzz orderless basic)))
 
-;; Keybind for maximizing
-(map! :leader (:prefix ("t" . "toggle")
-               :desc "Maximize window" "M" #'toggle-frame-maximized))
-
-;; Navigation with SPC w arrowkeys
-(map! :map evil-window-map
-      [left]  #'evil-window-left
-      [right] #'evil-window-right
-      [up] #'evil-window-up
-      [down] #'evil-window-down)
-
-;; Isabelle configuration
-(load! "isabelle-settings/config.el")
-
 
 ;; Discord rich presence
 (setq elcord-refresh-rate 5)
@@ -88,25 +73,10 @@
 (setq elcord-show-small-icon :false)
 ;; (elcord-mode)
 
-;; Haskell language server
-(setq lsp-haskell-server-path "~/.ghcup/bin/haskell-language-server-wrapper")
 
-;; LSP+clangd
-(setq lsp-clients-clangd-args '("-j=3"
-				"--background-index"
-				"--clang-tidy"
-				"--completion-style=detailed"
-				"--header-insertion=never"
-				"--header-insertion-decorators=0"))
-(after! lsp-clangd (set-lsp-priority! 'clangd 2))
-
-;; Semantic highlighting
-(add-hook 'lsp-mode-hook 'lsp-semantic-tokens-mode)
+(load! "isabelle-settings/config.el")
+(load! "lspsettings.el")
+(load! "themeswitcher.el")
 
 
-(map! :leader :map 'treemacs-mode-map :localleader
-      :desc "Switch workspace" "s" #'treemacs-switch-workspace
-      :desc "Edit workspaces"  "e" #'treemacs-edit-workspaces
-      :desc "Add project"      "a" #'treemacs-add-project-to-workspace
-      :desc "Remove project"   "R" #'treemacs-remove-project-from-workspace
-      :desc "Rename project"   "r" #'treemacs-rename-project)
+(load! "keybindings.el")

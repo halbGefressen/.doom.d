@@ -1,5 +1,7 @@
 ;;; isabelle-settings/keybindings.el -*- lexical-binding: t; -*-
 
+(map! :desc "Bonk" "C-ẞ" #'lsp-isar-insert-sledgehammer-and-call
+      :desc "try0" "C-ß" #'lsp-isar-insert-try0)
 ;; Accessible via SPC m
 (map! :leader :map 'isar-mode-map :localleader
       (:prefix ("t" . "Try0...")
