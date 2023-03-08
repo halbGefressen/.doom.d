@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: inductive
+# key: ind
+# --
+
+inductive ${1:prop_name} :: "${2:prop_type} \<Rightarrow> bool" where
+  "$1 = True"
