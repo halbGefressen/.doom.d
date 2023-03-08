@@ -80,3 +80,6 @@
 
 
 (load! "keybindings.el")
+
+
+(setq pconfig-lighttheme 'doom-solarized-light)
