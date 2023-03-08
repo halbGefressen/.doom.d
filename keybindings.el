@@ -9,7 +9,17 @@
 
 (map! :map 'doom-leader-toggle-map
       :desc "Toggle light mode" "t" #'toggle-lightmode
+      :desc "Toggle tab bars"   "T" #'centaur-tabs-mode
       :desc "Maximize window"   "M" #'toggle-frame-maximized)
+
+(map! :leader (:prefix ("r" . "Movement")
+               :desc "Left window"      "i" #'evil-window-left
+               :desc "Right window"     "e" #'evil-window-right
+               :desc "Top window"       "l" #'evil-window-top
+               :desc "Bottom window"    "a" #'evil-window-bottom
+               :desc "Next Frame"       "c" #'+evil/next-frame
+               :desc "Previous Frame"   "v" #'+evil/previous-frame
+               ))
 
 (map! :map 'evil-normal-state-map
       :desc "Switch window left" "[ w" #'evil-window-left
