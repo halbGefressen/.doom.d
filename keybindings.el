@@ -19,6 +19,7 @@
                :desc "Bottom window"    "a" #'evil-window-bottom
                :desc "Next Frame"       "c" #'+evil/next-frame
                :desc "Previous Frame"   "v" #'+evil/previous-frame
+               :desc "Switch buffer"    "b" #'consult-buffer
                ))
 
 (map! :map 'evil-normal-state-map
@@ -31,3 +32,7 @@
       :desc "Add project"      "a" #'treemacs-add-project-to-workspace
       :desc "Remove project"   "R" #'treemacs-remove-project-from-workspace
       :desc "Rename project"   "r" #'treemacs-rename-project)
+
+;; amogus
+(map! :map 'doom-leader-insert-map
+      :desc "Amogus" "a" #'(lambda () (interactive) (insert-char 3486 1 t)))
