@@ -77,7 +77,7 @@
 (load! "isabelle-settings/config.el")
 (load! "lspsettings.el")
 (load! "themeswitcher.el")
-
+(load! "mu4e.el")
 
 (load! "keybindings.el")
 

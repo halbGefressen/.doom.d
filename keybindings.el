@@ -15,8 +15,8 @@
 (map! :leader (:prefix ("r" . "Movement")
                :desc "Left window"      "i" #'evil-window-left
                :desc "Right window"     "e" #'evil-window-right
-               :desc "Top window"       "l" #'evil-window-top
-               :desc "Bottom window"    "a" #'evil-window-bottom
+               :desc "Top window"       "l" #'evil-window-up
+               :desc "Bottom window"    "a" #'evil-window-down
                :desc "Next Frame"       "c" #'+evil/next-frame
                :desc "Previous Frame"   "v" #'+evil/previous-frame
                :desc "Switch buffer"    "b" #'consult-buffer

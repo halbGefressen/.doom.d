@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Programm fängt fehlerhafte Eingaben nicht ab
+# key: eingaben
+# --
+(-$1) Programm fängt fehlerhafte Eingaben nicht ab

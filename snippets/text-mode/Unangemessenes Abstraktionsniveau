@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Unangemessenes Abstraktionsniveau
+# key: ua
+# --
+(-$1) Unangemessenes Abstraktionsniveau
