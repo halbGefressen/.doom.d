@@ -23,4 +23,5 @@
         :desc "Insert argo"          "r" #'lsp-isar-insert-argo
         :desc "Insert satx"          "x" #'lsp-isar-insert-satx
         :desc "Insert proof outline" "P" #'lsp-isar-insert-proof-outline
-        :desc "Delete windows"       "K" #'delete-other-windows) ;; not quite finished
+        :desc "Delete windows"       "K" #'delete-other-windows ;; not quite finished
+        :desc "Open panels"          "W" #'lsp-isar-open-output-and-progress-right-isabelle)

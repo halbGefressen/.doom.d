@@ -58,4 +58,6 @@
 
 (package! hotfuzz)
 
+(package! ement)
+
 (load! "isabelle-settings/packages.el")

@@ -12,5 +12,6 @@
 
 (setq message-send-mail-function 'smtpmail-send-it
         smtpmail-auth-credentials "~/.authinfo.gpg"
+        smtpmail-stream-type 'starttls
         smtpmail-smtp-server "localhost"
         smtpmail-smtp-service 1025)

@@ -48,6 +48,30 @@
   (lsp-isar-parse-args-nollvm nil)
   )
 
+(defun lsp-isar-open-output-and-progress-isabelle ()
+  (interactive)
+  (split-window-below)
+  (other-window 1)
+  (switch-to-buffer "*lsp-isar-state*")
+  (text-scale-set -1)
+  (lsp-isar-toggle-window-dedicated)
+  (evil-window-set-height 12)
+  (split-window-right)
+  (other-window 1)
+  (evil-window-set-width 75)
+  (switch-to-buffer "*lsp-isar-output*")
+  (text-scale-set -1)
+  (lsp-isar-toggle-window-dedicated)
+  (other-window -2)
+  (split-window-right)
+  (other-window 1)
+  (switch-to-buffer "*lsp-isar-progress*")
+  (evil-window-set-width 30)
+  (text-scale-set -3)
+  (lsp-isar-toggle-window-dedicated)
+  (other-window -1)
+)
+
 (use-package! lsp-isar
   :commands lsp-isar-define-client-and-start
   :custom
@@ -57,7 +81,7 @@
   (lsp-isar-split-pattern 'lsp-isar-split-pattern-two-columns)
   (lsp-isar-decorations-delayed-printing t)
   :init
-  (add-hook 'lsp-isar-init-hook 'lsp-isar-open-output-and-progress-right-spacemacs)
+  (add-hook 'lsp-isar-init-hook 'lsp-isar-open-output-and-progress-isabelle)
   (add-hook 'isar-mode-hook #'lsp-isar-define-client-and-start)
 
   (push (concat local-isabelle-path "/src/Tools/emacs-lsp/yasnippet")
@@ -73,6 +97,7 @@
                                   (lambda (&rest args) 1)))
                        (apply fn args)))
             (advice-add #'evil-motion-range :around #'~/evil-motion-range--wrapper)
+
 
 
 (setq lsp-isabelle-options (append lsp-isabelle-options (list "-d" "/home/christian/Programme/PSL" "-l" "Smart_Isabelle")))
