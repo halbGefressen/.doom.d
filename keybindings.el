@@ -8,8 +8,10 @@
       [down]    #'evil-window-down)
 
 (map! :map evil-motion-state-map
-      [up]    #'evil-previous-visual-line
-      [down]    #'evil-next-visual-line)
+      [up]      #'evil-previous-visual-line
+      [down]    #'evil-next-visual-line
+      [home]    #'evil-beginning-of-visual-line
+      [end]     #'evil-end-of-visual-line)
 
 (map! :map 'doom-leader-toggle-map
       :desc "Toggle light mode" "t" #'toggle-lightmode
