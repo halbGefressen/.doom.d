@@ -13,4 +13,4 @@
         :desc "Switch to output"        "a" (lambda () (interactive) (switch-to-buffer-other-window "*lsp-isar-output*"))
         :desc "Switch to state"         "i" (lambda () (interactive) (switch-to-buffer-other-window "*lsp-isar-state*"))
         :desc "Switch to progress"      "e" (lambda () (interactive) (switch-to-buffer-other-window "*lsp-isar-progress*"))
-        :desc "Open panels"             "W" #'lsp-isar-open-output-and-progress-right-isabelle)
+        :desc "Open panels"             "W" #'lsp-isar-open-output-and-progress-isabelle)

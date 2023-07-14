@@ -21,7 +21,7 @@
 ;;      "/Programme/isabelle-emacs/verit-2021.06.2-rmx/x86_64-linux/veriT"))
 
 (use-package! isar-mode
-  :mode "\\.thy\\'"
+  :mode "\\(\\.thy\\|\\.ML\\)\\'"
   :config
   ;; (add-hook 'isar-mode-hook 'turn-on-highlight-indentation-mode)
   (add-hook 'isar-mode-hook 'flycheck-mode)
@@ -100,6 +100,6 @@
 
 
 
-(setq lsp-isabelle-options (append lsp-isabelle-options (list "-d" "/home/christian/Programme/PSL" "-l" "Smart_Isabelle")))
+(setq lsp-isabelle-options (append lsp-isabelle-options (list "-d" "/home/christian/Programme/PSL" "-l" "HOL-Analysis")))
 ;; Keybindings for local leader
 (load! "keybindings.el")

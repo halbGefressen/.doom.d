@@ -7,6 +7,10 @@
       [up]      #'evil-window-up
       [down]    #'evil-window-down)
 
+(map! :map evil-motion-state-map
+      [up]    #'evil-previous-visual-line
+      [down]    #'evil-next-visual-line)
+
 (map! :map 'doom-leader-toggle-map
       :desc "Toggle light mode" "t" #'toggle-lightmode
       :desc "Toggle tab bars"   "T" #'centaur-tabs-mode
