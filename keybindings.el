@@ -18,6 +18,9 @@
       :desc "Toggle tab bars"   "T" #'centaur-tabs-mode
       :desc "Maximize window"   "M" #'toggle-frame-maximized)
 
+(map! :map 'doom-leader-open-map
+      :desc "Open ChatGPT"      "g" #'gptel)
+
 (map! :leader (:prefix ("r" . "Movement")
                :desc "Left window"      "i" #'evil-window-left
                :desc "Right window"     "e" #'evil-window-right
