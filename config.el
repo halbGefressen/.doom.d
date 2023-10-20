@@ -73,6 +73,9 @@
 (setq elcord-show-small-icon :false)
 ;; (elcord-mode)
 
+;; Tuntox for CRDT
+(setq crdt-tuntox-executable "/usr/bin/tuntox")
+(setq crdt-use-tuntox 'confirm)
 
 (load! "isabelle-settings/config.el")
 (load! "lspsettings.el")
