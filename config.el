@@ -62,9 +62,6 @@
 (setq display-time-default-load-average 'nil)
 (display-time-mode 1)
 
-(after! orderless
-  (setq completion-styles '(hotfuzz orderless basic)))
-
 
 ;; Discord rich presence
 (setq elcord-refresh-rate 5)

@@ -10,7 +10,8 @@
 				"--clang-tidy"
 				"--completion-style=detailed"
 				"--header-insertion=never"
-				"--header-insertion-decorators=0"))
+				"--header-insertion-decorators=0"
+                                "--enable-config"))
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
 
 ;; Semantic highlighting
