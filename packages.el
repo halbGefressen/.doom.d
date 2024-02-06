@@ -60,6 +60,4 @@
 
 (package! ement)
 
-(package! gptel)
-
 (load! "isabelle-settings/packages.el")
