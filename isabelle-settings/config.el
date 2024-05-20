@@ -10,15 +10,6 @@
 ;; export ISABELLE_VERIT=$HOME/Programme/isabelle-emacs/verit-2021.06.2-rmx/x86_64-linux/veriT
 ;; export VERIT_VERSION="2021.06.2-RMX"
 
-(setenv "CVC5_SOLVER" (concat
-        (getenv "HOME")
-        "/Programme/isabelle-emacs/cvc5-1.0.2/x86_64-linux/cvc5"))
-(setenv "CVC5_VERSION" "1.0.2")
-(setenv "E_HOME" (concat (getenv "HOME") "/Programme/eprover/PROVER"))
-(setenv "E_VERSION" "3.0")
-;; (setenv "ISABELLE_VERIT" (concat
-;;      (getenv "HOME")
-;;      "/Programme/isabelle-emacs/verit-2021.06.2-rmx/x86_64-linux/veriT"))
 
 (use-package! isar-mode
   :mode "\\(\\.thy\\|\\.ML\\)\\'"
@@ -40,13 +31,13 @@
   (add-hook 'isar-mode-hook
             (lambda ()
               (unicode-tokens-mode) (unicode-tokens-mode)))
-  (add-hook 'isar-mode-hook #'display-line-numbers-mode)
-  )
+  (add-hook 'isar-mode-hook #'display-line-numbers-mode))
+  
 
 (use-package! lsp-isar-parse-args
   :custom
-  (lsp-isar-parse-args-nollvm nil)
-  )
+  (lsp-isar-parse-args-nollvm nil))
+  
 
 (defun lsp-isar-open-output-and-progress-isabelle ()
   (interactive)
@@ -69,8 +60,8 @@
   (evil-window-set-width 40)
   (text-scale-set -3)
   (lsp-isar-toggle-window-dedicated)
-  (other-window -1)
-)
+  (other-window -1))
+
 
 (use-package! lsp-isar
   :commands lsp-isar-define-client-and-start
@@ -86,20 +77,20 @@
 
   (push (concat local-isabelle-path "/src/Tools/emacs-lsp/yasnippet")
         yas-snippet-dirs)
-  (setq lsp-isar-path-to-isabelle local-isabelle-path)
-  )  ; looks for ~/.doom.d/my/package/my-package.el
+  (setq lsp-isar-path-to-isabelle local-isabelle-path))
+    ; looks for ~/.doom.d/my/package/my-package.el
 
 ;; https://github.com/m-fleury/isabelle-release/issues/21
 (defun ~/evil-motion-range--wrapper (fn &rest args)
   "Like `evil-motion-range', but override field-beginning for performance.
      See URL `https://github.com/ProofGeneral/PG/issues/427'."
           (cl-letf (((symbol-function 'field-beginning)
-                                  (lambda (&rest args) 1)))
-                       (apply fn args)))
-            (advice-add #'evil-motion-range :around #'~/evil-motion-range--wrapper)
+                     (lambda (&rest args) 1)))
+                   (apply fn args)))
+(advice-add #'evil-motion-range :around #'~/evil-motion-range--wrapper)
 
 
 
-(setq lsp-isabelle-options (append lsp-isabelle-options (list "-d" "/home/christian/Programme/PSL" "-l" "HOL-Analysis")))
+(setq lsp-isabelle-options (append lsp-isabelle-options (list "-l" "HOL-Analysis")))
 ;; Keybindings for local leader
 (load! "keybindings.el")

@@ -63,16 +63,6 @@
 (display-time-mode 1)
 
 
-;; Discord rich presence
-(setq elcord-refresh-rate 5)
-(setq elcord-use-major-mode-as-main-icon :true)
-(setq elcord-editor-icon "emacs_material_icon")
-(setq elcord-show-small-icon :false)
-;; (elcord-mode)
-
-;; Tuntox for CRDT
-(setq crdt-tuntox-executable "/usr/bin/tuntox")
-(setq crdt-use-tuntox 'confirm)
 
 (load! "isabelle-settings/config.el")
 (load! "lspsettings.el")

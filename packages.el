@@ -49,15 +49,4 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
-(package! evil-tutor)
-
-
-(package! elcord)
-
-(package! color-identifiers-mode)
-
-(package! hotfuzz)
-
-(package! ement)
-
 (load! "isabelle-settings/packages.el")
